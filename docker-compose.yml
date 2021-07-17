@@ -11,6 +11,11 @@ services:
       environment:
          PORT: 3000
          NODE_ENV: 'development'
+         DB_USERNAME: test
+         DB_PASSWORD: 1234
+         DB_DATABASE: socialBlog
+         DB_HOSTNAME: db
+         DB_DIALECT: mysql
       depends_on: 
          - db
    db: 
@@ -24,6 +29,6 @@ services:
            MYSQL_USER: test
            MYSQL_PASSWORD: 1234
       ports:
-         - 3307:3306
+         - 3306:3306
 volumes: 
    db_data:

@@ -2,10 +2,21 @@ import express from 'express'
 import middlewareLog from './middlewares/middlewarelog'
 import Logger from './configs/logger'
 import constant from './configs/constant'
+import cors from 'cors'
+import bodyParser from 'body-parser'
+import db from './configs/connectDB'
+
+db.authenticate()
+   .then(() => Logger.info('Database connected...'))
+   .catch(err => Logger.error('Error: ' + err))
 
 const app = express()
 
 app.use(middlewareLog)
+app.use(cors)
+app.use(bodyParser.urlencoded({extended: false, limit: '50mb'}))
+app.use(bodyParser.json())
+
 
 app.get('/healthz', (req, res) => {
    Logger.info('OK !!!')

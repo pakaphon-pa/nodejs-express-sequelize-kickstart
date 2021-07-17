@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "nodemon --exec babel-node ./src/server.js",
-    "watch": "nodemon"
+    "watch": "nodemon",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:seeds": "npx sequelize-cli db:seed:all"
   },
   "dependencies": {
     "@babel/cli": "^7.14.5",
@@ -13,6 +15,7 @@
     "@babel/plugin-transform-runtime": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
     "@babel/runtime": "^7.14.6",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "env": "^0.0.2",
     "express": "^4.17.1",
@@ -25,6 +28,7 @@
     "@babel/node": "^7.14.7",
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.6.5"
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
   }
 }
