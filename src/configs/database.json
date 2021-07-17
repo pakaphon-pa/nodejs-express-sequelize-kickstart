@@ -1,21 +1,21 @@
 {
    "development": {
       "username": "test",
-      "password": 1234,
+      "password": "1234",
       "database": "socialBlog",
       "host": "db",
       "dialect": "mysql"
    },
    "test": {
       "username": "test",
-      "password": 1234,
+      "password": "1234",
       "database": "socialBlog",
       "host": "db",
       "dialect": "mysql"
    },
    "production": {
       "username": "test",
-      "password": 1234,
+      "password": "1234",
       "database": "socialBlog",
       "host": "db",
       "dialect": "mysql"

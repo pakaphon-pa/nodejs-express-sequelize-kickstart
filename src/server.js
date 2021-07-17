@@ -13,7 +13,7 @@ db.authenticate()
 const app = express()
 
 app.use(middlewareLog)
-app.use(cors)
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: false, limit: '50mb'}))
 app.use(bodyParser.json())
 
@@ -21,8 +21,14 @@ app.use(bodyParser.json())
 app.get('/healthz', (req, res) => {
    Logger.info('OK !!!')
    res.status(200).send('OK !!!')
+   res.status(200).send('OK !!!')
 })
 
+
+app.get('/ssss', (req, res) => {
+   Logger.info('OK !!!')
+   res.status(200).send('OK !!!')
+})
 app.get('/logger', (req, res) => {
    Logger.error('This is an error ')
    Logger.warn('This is an warn log')
