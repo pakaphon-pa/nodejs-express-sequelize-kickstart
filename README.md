@@ -1,4 +1,4 @@
-MY WORKSHOP TRANNING 
+MY WORKSHOP TRAINING
 
    Nodejs
    Express
