@@ -4,8 +4,8 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --exec babel-node ./src/server.js",
-    "watch": "nodemon",
+    "dev": "babel-node ./src/server.js",
+    "start:dev": "nodemon",
     "db:migrate": "npx sequelize-cli db:migrate",
     "db:seeds": "npx sequelize-cli db:seed:all"
   },

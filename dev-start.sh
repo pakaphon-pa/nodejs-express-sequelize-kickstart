@@ -4,4 +4,4 @@ echo "RUN MIGRATE:"
 yarn db:migrate
 
 echo "API START"
-yarn dev
+yarn start:dev
