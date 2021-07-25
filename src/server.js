@@ -5,6 +5,7 @@ import constant from "./configs/constant";
 import cors from "cors";
 import bodyParser from "body-parser";
 import db from "./configs/connectDB";
+import router from "./routes";
 
 db.authenticate()
   .then(() => Logger.info("Database connected..."))
@@ -17,18 +18,13 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false, limit: "50mb" }));
 app.use(bodyParser.json());
 
+app.use("/api/v1", router);
+
 app.get("/healthz", (req, res) => {
   Logger.info("OK !!!");
-  Logger.info("OK !!!");
-  Logger.info("OK !!!");
-
   res.status(200).send("OK !!!");
 });
 
-app.get("/ssss", (req, res) => {
-  Logger.info("OK !!!");
-  res.status(200).send("OK ssssssssss!!!");
-});
 app.get("/logger", (req, res) => {
   Logger.error("This is an error ");
   Logger.warn("This is an warn log");
