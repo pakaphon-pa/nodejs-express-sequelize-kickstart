@@ -11,11 +11,33 @@ export const createAccount = (req, res) => {
     const password = get(req, "body.password", null);
     const password_confirm = get(req, "body.password_confirm", null);
 
+    const existing = accountModel.findOne({ email: email });
+
+    if (existing)
+      return res
+        .status(400)
+        .json({ success: false, error: true, message: "EMAIL IS EXISTING" });
+
+    if (password !== password_confirm)
+      return res
+        .json(400)
+        .json({
+          success: false,
+          error: true,
+          message: "PASSWORD IS NOT MATCH",
+        });
+
     res.status(200).json({
       success: true,
+      error: false,
       data: get(req, "body", {}),
     });
   } catch (error) {
     Logger.error(JSON.stringify(error));
+    return res.json(500).json({
+      success: false,
+      error: true,
+      message: JSON.stringify(error),
+    });
   }
 };
