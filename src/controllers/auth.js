@@ -32,7 +32,9 @@ export const authenication = async (req, res) => {
       });
     }
 
-    const token = await jwt.sign({ _id: account.id }, constant.JWT);
+    const token = await jwt.sign({ _id: account.id }, constant.JWT, {
+      expiresIn: "2h",
+    });
 
     return res.status(200).json({
       success: true,

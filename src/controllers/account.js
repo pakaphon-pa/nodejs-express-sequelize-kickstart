@@ -55,3 +55,33 @@ export const createAccount = async (req, res) => {
     });
   }
 };
+
+export const getMy = async (req, res) => {
+  try {
+    const account = await accountModel.findOne({
+      where: { id: req.user },
+      attributes: { exclude: ["password", "salt"] },
+    });
+
+    if (!account) {
+      res.status(401).json({
+        success: false,
+        error: true,
+        message: "unauthenticated",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      error: false,
+      data: account,
+    });
+  } catch (error) {
+    Logger.error(JSON.stringify(error));
+    return res.status(500).json({
+      success: false,
+      error: true,
+      message: JSON.stringify(error),
+    });
+  }
+};
