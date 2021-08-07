@@ -29,8 +29,7 @@ export const createAccount = async (req, res) => {
     const salt = await generateSalt(12);
 
     const hashed = await hasher(password, salt);
-    console.log(salt);
-    console.log(hashed);
+
     const userEntry = {
       title: title,
       first_name,
