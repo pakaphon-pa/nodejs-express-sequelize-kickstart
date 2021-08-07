@@ -1,10 +1,10 @@
 import crypto from "crypto";
 
-export const generateSalt = (rounds) => {
+export const generateSalt = async (rounds) => {
   return crypto.randomBytes(rounds).toString("hex");
 };
 
-export const hasher = (password, salt) => {
+export const hasher = async (password, salt) => {
   let hash = crypto.createHmac("sha512", salt);
   hash.update(password);
 
@@ -13,15 +13,15 @@ export const hasher = (password, salt) => {
 
 // NOTE: hash object { hashedpassword: "ABC", salt: "123124ss" }
 
-export const compare = (password, hash) => {
-  if (password == null || hash == null) {
+export const compare = async (plainTextPassword, hash) => {
+  if (plainTextPassword == null || hash == null) {
     throw new Error("password and hash is required to compare");
   }
-  if (typeof password !== "string" || typeof hash !== "object") {
+  if (typeof plainTextPassword !== "string" || typeof hash !== "object") {
     throw new Error("password must be a String and hash must be an Object");
   }
-  let passwordData = hasher(password, hash.salt);
-  if (passwordData.hashedpassword === hash.hashedpassword) {
+  let passwordData = hasher(plainTextPassword, hash.salt);
+  if (passwordData === hash.hashedpassword) {
     return true;
   }
   return false;
