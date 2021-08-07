@@ -11,7 +11,7 @@ export const hasher = async (password, salt) => {
   return hash.digest("hex");
 };
 
-// NOTE: hash object { hashedpassword: "ABC", salt: "123124ss" }
+// NOTE: hash object { password: "ABC", salt: "123124ss" }
 
 export const compare = async (plainTextPassword, hash) => {
   if (plainTextPassword == null || hash == null) {
@@ -20,8 +20,8 @@ export const compare = async (plainTextPassword, hash) => {
   if (typeof plainTextPassword !== "string" || typeof hash !== "object") {
     throw new Error("password must be a String and hash must be an Object");
   }
-  let passwordData = hasher(plainTextPassword, hash.salt);
-  if (passwordData === hash.hashedpassword) {
+  let passwordData = await hasher(plainTextPassword, hash.salt);
+  if (passwordData === hash.password) {
     return true;
   }
   return false;

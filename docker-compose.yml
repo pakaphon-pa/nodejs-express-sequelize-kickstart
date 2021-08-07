@@ -17,6 +17,7 @@ services:
       DB_DATABASE: socialBlog
       DB_HOSTNAME: db
       DB_DIALECT: mysql
+      JWT: "secret"
     depends_on:
       - db
   db:

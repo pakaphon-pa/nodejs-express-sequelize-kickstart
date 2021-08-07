@@ -12,7 +12,7 @@ export const createAccount = async (req, res) => {
     const password = get(req, "body.password", null);
     const password_confirm = get(req, "body.password_confirm", null);
 
-    const existing = await accountModel.findOne({ email: email });
+    const existing = await accountModel.findOne({ where: { email: email } });
 
     if (existing)
       return res
@@ -48,7 +48,7 @@ export const createAccount = async (req, res) => {
     });
   } catch (error) {
     Logger.error(JSON.stringify(error));
-    return res.json(500).json({
+    return res.status(500).json({
       success: false,
       error: true,
       message: JSON.stringify(error),
