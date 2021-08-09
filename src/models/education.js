@@ -1,10 +1,8 @@
 import db from "../configs/connectDB";
 import Sequelize from "sequelize";
-import experienceModel from "./experience";
-import educationModel from "./education";
 
-const accountModel = db.define(
-  "account",
+const educationModel = db.define(
+  "education",
   {
     id: {
       type: Sequelize.INTEGER,
@@ -12,28 +10,39 @@ const accountModel = db.define(
       autoIncrement: true,
       primaryKey: true,
     },
-    title: {
+    account_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: "account",
+        key: "id",
+      },
+    },
+    school: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    first_name: {
+    degree: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    last_name: {
+    fieldofstudy: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    email: {
-      type: Sequelize.STRING,
-      unique: true,
-      allowNull: false,
-    },
-    password: {
+    from: {
       type: Sequelize.STRING,
       allowNull: false,
     },
-    salt: {
+    to: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    current: {
+      type: Sequelize.STRING,
+      allowNull: false,
+    },
+    description: {
       type: Sequelize.STRING,
       allowNull: false,
     },
@@ -44,28 +53,8 @@ const accountModel = db.define(
     createdAt: "created_at",
     updatedAt: "updated_at",
     deletedAt: "deleted_at",
-    tableName: "account",
+    tableName: "education",
   }
 );
 
-accountModel.hasMany(experienceModel, {
-  foreignKey: "account_id",
-  sourceKey: "id",
-});
-
-experienceModel.belongsTo(accountModel, {
-  foreignKey: "account_id",
-  targetKey: "id",
-});
-
-accountModel.hasMany(educationModel, {
-  foreignKey: "account_id",
-  sourceKey: "id",
-});
-
-educationModel.belongsTo(accountModel, {
-  foreignKey: "account_id",
-  targetKey: "id",
-});
-
-export default accountModel;
+export default educationModel;

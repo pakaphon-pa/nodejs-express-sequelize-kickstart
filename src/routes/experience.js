@@ -8,8 +8,8 @@ import { authenticated } from "../middlewares/authenticated";
 
 const router = express.Router();
 
-router.post("/", createExperience);
-router.put("/:id", updateExperience);
+router.post("/", authenticated, createExperience);
+router.put("/:id", authenticated, updateExperience);
 router.delete("/:id", authenticated, deletedExperience);
 
 export default router;
