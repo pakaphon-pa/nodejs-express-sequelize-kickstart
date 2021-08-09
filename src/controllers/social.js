@@ -2,7 +2,7 @@ import Logger from "../configs/logger";
 import { get } from "lodash";
 import socialModel from "./../models/social";
 
-export const upsertSocial = (req, res) => {
+export const upsertSocial = async (req, res) => {
   try {
     const accountId = get(req, "user", null);
     const account = await accountModel.findOne({
