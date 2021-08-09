@@ -1,6 +1,7 @@
 import Logger from "../configs/logger";
 import { get } from "lodash";
 import educationModel from "./../models/education";
+import accountModel from "./../models/account";
 
 export const createEducation = async (req, res) => {
   try {
