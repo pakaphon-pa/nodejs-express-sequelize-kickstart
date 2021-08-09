@@ -1,9 +1,8 @@
 import db from "../configs/connectDB";
 import Sequelize from "sequelize";
-import accountModel from "./account";
 
-const educationModel = db.define(
-  "education",
+const experienceModel = db.define(
+  "experience",
   {
     id: {
       type: Sequelize.INTEGER,
@@ -54,8 +53,8 @@ const educationModel = db.define(
     createdAt: "created_at",
     updatedAt: "updated_at",
     deletedAt: "deleted_at",
-    tableName: "education",
+    tableName: "experience",
   }
 );
 
-export default educationModel;
+export default experienceModel;

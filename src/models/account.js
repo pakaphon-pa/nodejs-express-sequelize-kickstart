@@ -1,6 +1,6 @@
 import db from "../configs/connectDB";
 import Sequelize from "sequelize";
-import educationModel from "./education";
+import educationModel from "./experience";
 
 const accountModel = db.define(
   "account",

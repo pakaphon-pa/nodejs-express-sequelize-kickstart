@@ -1,6 +1,6 @@
 import accountModel from "../models/account";
 import Logger from "../configs/logger";
-import { get, toLength } from "lodash";
+import { get } from "lodash";
 import { generateSalt, hasher } from "../utils/hashed";
 
 export const createAccount = async (req, res) => {
