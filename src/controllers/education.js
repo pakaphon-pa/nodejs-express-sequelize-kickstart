@@ -49,7 +49,7 @@ export const createEducation = async (req, res) => {
   }
 };
 
-export const updateExperience = async (req, res) => {
+export const updateEducation = async (req, res) => {
   try {
     const id = (req, "params", null);
 
@@ -75,7 +75,7 @@ export const updateExperience = async (req, res) => {
   }
 };
 
-export const deletedExperience = async (req, res) => {
+export const deletedEducation = async (req, res) => {
   try {
     const id = (req, "params", null);
 
