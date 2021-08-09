@@ -1,4 +1,7 @@
 import accountModel from "../models/account";
+import experienceModel from "../models/experience";
+import educationModel from "../models/education";
+import socialModel from "./../models/social";
 import Logger from "../configs/logger";
 import { get } from "lodash";
 import { generateSalt, hasher } from "../utils/hashed";
@@ -60,6 +63,17 @@ export const getMy = async (req, res) => {
   try {
     const account = await accountModel.findOne({
       where: { id: req.user },
+      include: [
+        {
+          model: experienceModel,
+        },
+        {
+          model: educationModel,
+        },
+        {
+          model: socialModel,
+        },
+      ],
       attributes: { exclude: ["password", "salt"] },
     });
 

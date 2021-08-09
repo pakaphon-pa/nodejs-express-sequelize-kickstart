@@ -2,6 +2,7 @@ import db from "../configs/connectDB";
 import Sequelize from "sequelize";
 import experienceModel from "./experience";
 import educationModel from "./education";
+import socialModel from "./social";
 
 const accountModel = db.define(
   "account",
@@ -64,6 +65,16 @@ accountModel.hasMany(educationModel, {
 });
 
 educationModel.belongsTo(accountModel, {
+  foreignKey: "account_id",
+  targetKey: "id",
+});
+
+accountModel.hasOne(socialModel, {
+  foreignKey: "account_id",
+  sourceKey: "id",
+});
+
+socialModel.belongsTo(accountModel, {
   foreignKey: "account_id",
   targetKey: "id",
 });
