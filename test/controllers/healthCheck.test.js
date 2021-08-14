@@ -4,8 +4,8 @@ import { server } from "../../src/server";
 
 describe("CALL HEALTHZ CHECK", async () => {
   it("IS OK", async () => {
-    const { body, status } = await request(server).get("/healthz");
-    const { data } = body;
-    expect(status).to.equal(200);
+    const healthz = await request(server).get("/healthz");
+    expect(healthz.status).to.equal(200);
+    expect(healthz.text).to.equal("OK !!!");
   });
 });
