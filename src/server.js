@@ -12,6 +12,7 @@ db.authenticate()
   .catch((err) => Logger.error("Error: " + err));
 
 const app = express();
+const server = require("http").Server(app);
 
 app.use(middlewareLog);
 app.use(cors());
@@ -38,3 +39,5 @@ app.get("/logger", (req, res) => {
 app.listen(constant.PORT, () => {
   Logger.debug(`Server is running @ http://localhost:${constant.PORT}`);
 });
+
+export { app, server };
