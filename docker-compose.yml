@@ -8,7 +8,7 @@ services:
       - ./:/usr/src/app
     ports:
       - "3000:3000"
-    command: sh ./dev-start.sh
+    command: ["./wait-for-db.sh", "db:3306", "--", "sh", "./dev-start.sh"]
     environment:
       PORT: 3000
       NODE_ENV: "development"

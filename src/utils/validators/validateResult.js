@@ -1,4 +1,5 @@
 import { validationResult } from "express-validator";
+import Logger from "../../configs/logger";
 
 export const validateResult = (req, res, next) => {
   try {
